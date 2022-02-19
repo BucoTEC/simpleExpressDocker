@@ -1,12 +1,13 @@
-FROM node:latest
+FROM node:alpine
 
 EXPOSE 3000
 
 WORKDIR /app
 
+COPY package.json package-lock.json* ./
+
 RUN npm i npm@latest -g
 
-COPY package.json package-lock.json* ./
 
 RUN npm install --no-optional && npm cache clean --force
 
